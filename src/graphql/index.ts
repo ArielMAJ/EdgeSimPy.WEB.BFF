@@ -7,6 +7,7 @@ import glob from "glob";
 
 const apolloServer = async () => {
   const resolvers = path.join(__dirname, "./resolvers/**/index.{ts,js}");
+  const resolvers_vercel = path.join(__dirname, "./index.{ts,js}");
   console.log("resolvers", resolvers);
   const resolverFiles = glob.sync(resolvers, { absolute: true });
   console.log("Found resolver files:", resolverFiles);
@@ -16,7 +17,7 @@ const apolloServer = async () => {
   console.log("allFiles", allFiles);
 
   const apolloSchemaOptions: BuildSchemaOptions = {
-    resolvers: [resolvers],
+    resolvers: [resolvers, resolvers_vercel],
     validate: false,
     container: Container,
   };

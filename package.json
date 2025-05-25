@@ -8,7 +8,7 @@
     "prebuild": "del-cli --force ./build",
     "build": "tsc",
     "prestart": "yarn build",
-    "start": "node -r dotenv/config build/app.js",
+    "start": "node -r dotenv/config build/src/app.js",
     "start:dev": "ts-node-dev --transpile-only -r dotenv/config src/app.ts",
     "test": "jest --projects ./tests/unit --runInBand"
   },

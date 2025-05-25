@@ -4,7 +4,7 @@
     {
       "src": "src/app.ts",
       "use": "@vercel/node",
-      "config": { "includeFiles": ["build/**", "dist/**", "**"] }
+      "config": { "includeFiles": ["build/**", "dist/**"] }
     }
   ],
   "routes": [

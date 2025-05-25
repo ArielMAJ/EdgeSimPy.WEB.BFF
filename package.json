@@ -2,6 +2,7 @@
   "name": "edge-sim-py.web.bff",
   "version": "0.0.1",
   "license": "ISC",
+  "type": "module",
   "description": "EdgeSimPy.WEB.BFF: EdgeSimPy's web system's backend-for-frontend.",
   "main": "src/app.ts",
   "scripts": {

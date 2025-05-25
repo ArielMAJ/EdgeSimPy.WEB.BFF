@@ -8,8 +8,13 @@ import glob from "glob";
 const apolloServer = async () => {
   const resolvers = path.join(__dirname, "./resolvers/**/index.{ts,js}");
   console.log("resolvers", resolvers);
-  const resolverFiles = glob.sync(__dirname, { absolute: true });
+  const resolverFiles = glob.sync(resolvers, { absolute: true });
   console.log("Found resolver files:", resolverFiles);
+  const allFiles = glob.sync(path.join(__dirname, "../../src/**/*.{ts,js}"), {
+    absolute: true,
+  });
+  console.log("allFiles", allFiles);
+
   const apolloSchemaOptions: BuildSchemaOptions = {
     resolvers: [resolvers],
     validate: false,

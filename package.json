@@ -13,8 +13,8 @@
     "test": "jest --projects ./tests/unit --runInBand"
   },
   "dependencies": {
-    "apollo-server-express": "^2.24.0",
-    "apollo-server-testing": "^2.24.0",
+    "apollo-server-express": "^3.13.0",
+    "apollo-server-testing": "^2.25.3",
     "axios": "^1.9.0",
     "class-validator": "^0.13.1",
     "dotenv": "^9.0.0",

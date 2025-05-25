@@ -8,8 +8,8 @@
     "prebuild": "del-cli --force ./dist",
     "build": "tsc",
     "prestart": "yarn build",
-    "start": "node -r dotenv/config dist/src/index.js",
-    "start:dev": "ts-node-dev --transpile-only -r dotenv/config src/index.ts",
+    "start": "node -r dotenv/config dist/index.js",
+    "start:dev": "ts-node-dev --transpile-only -r dotenv/config index.ts",
     "test": "jest --projects ./tests/unit --runInBand"
   },
   "dependencies": {

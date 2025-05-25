@@ -1,4 +1,4 @@
-import CurrentUser from "graphql/resolvers/Auth/types/objects/CurrentUser";
+import CurrentUser from "../../graphql/resolvers/Auth/types/objects/CurrentUser";
 import config from "../../config";
 import AxiosInstance from "../../utils/axios-instance";
 import keysToCamelCase from "../../utils/response-parser";

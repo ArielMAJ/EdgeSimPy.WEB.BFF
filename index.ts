@@ -1,6 +1,6 @@
 import express from "express";
-import config from "./config";
-import apolloServer from "./graphql";
+import config from "./src/config";
+import apolloServer from "./src/graphql";
 
 const { PORT } = config;
 

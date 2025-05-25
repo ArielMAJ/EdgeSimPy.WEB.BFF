@@ -1,4 +1,4 @@
-import Token from "graphql/resolvers/Auth/types/objects/Token";
+import Token from "../../graphql/resolvers/Auth/types/objects/Token";
 import config from "../../config";
 import AxiosInstance from "../../utils/axios-instance";
 import keysToCamelCase from "../../utils/response-parser";

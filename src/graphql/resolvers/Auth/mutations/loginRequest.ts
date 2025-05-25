@@ -12,12 +12,9 @@ export default class LoginRequestResolver {
     input: LoginRequestInput
   ): Promise<Token> {
     const { email, password } = input;
-    console.info(`[LoginRequestResolver] Received login request for email: ${email}`);
-    return requestToken(email, password).catch((error: any) => {
-      if (error.response && error.response.status === 401) {
-        throw new AuthenticationError("Invalid email or password.");
-      }
-      throw error;
-    });
+    console.info(
+      `[LoginRequestResolver] Received login request for email: ${email}`
+    );
+    return requestToken(email, password);
   }
 }

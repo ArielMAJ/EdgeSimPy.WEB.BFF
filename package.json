@@ -5,16 +5,16 @@
   "description": "EdgeSimPy.WEB.BFF: EdgeSimPy's web system's backend-for-frontend.",
   "main": "src/app.ts",
   "scripts": {
-    "prebuild": "del-cli --force ./build",
+    "prebuild": "del-cli --force ./dist",
     "build": "tsc",
     "prestart": "yarn build",
-    "start": "node -r dotenv/config build/app.js",
-    "start:dev": "ts-node-dev --transpile-only -r dotenv/config src/app.ts",
+    "start": "node -r dotenv/config dist/src/index.js",
+    "start:dev": "ts-node-dev --transpile-only -r dotenv/config src/index.ts",
     "test": "jest --projects ./tests/unit --runInBand"
   },
   "dependencies": {
-    "apollo-server-express": "^2.24.0",
-    "apollo-server-testing": "^2.24.0",
+    "apollo-server-express": "^3.13.0",
+    "apollo-server-testing": "^2.25.3",
     "axios": "^1.9.0",
     "class-validator": "^0.13.1",
     "dotenv": "^9.0.0",

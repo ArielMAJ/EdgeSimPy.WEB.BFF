@@ -7,7 +7,9 @@ const { PORT } = config;
 const app = express();
 
 const start = async (port: number): Promise<void> => {
-  (await apolloServer()).applyMiddleware({ app, path: "/graphql" });
+  const apolloServerInstance = await apolloServer();
+  await apolloServerInstance.start();
+  apolloServerInstance.applyMiddleware({ app, path: "/graphql" });
 
   return new Promise<void>((resolve) => {
     app.listen(port, async () => {

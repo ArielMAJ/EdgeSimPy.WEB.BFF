@@ -1,13 +1,14 @@
-import "reflect-metadata";
-import path from "path";
 import { ApolloServer } from "apollo-server-express";
+import "reflect-metadata";
 import { BuildSchemaOptions, buildSchema } from "type-graphql";
 import { Container } from "typedi";
+import GetCurrentUserResolver from "./resolvers/Auth/queries/currentUser";
+import LoginRequestResolver from "./resolvers/Auth/mutations/loginRequest";
+import InfoResolver from "./resolvers/Info/queries/info";
 
 const apolloServer = async () => {
-  const resolvers = path.join(__dirname, "./resolvers/**/index.{ts,js}");
   const apolloSchemaOptions: BuildSchemaOptions = {
-    resolvers: [resolvers],
+    resolvers: [GetCurrentUserResolver, LoginRequestResolver, InfoResolver],
     validate: false,
     container: Container,
   };
@@ -15,7 +16,6 @@ const apolloServer = async () => {
 
   return new ApolloServer({
     schema: apolloSchema,
-    playground: true,
     introspection: true,
     context: ({ req }) => ({ req }),
   });

@@ -4,6 +4,7 @@ import { ApolloServer } from "apollo-server-express";
 import { BuildSchemaOptions, buildSchema } from "type-graphql";
 import { Container } from "typedi";
 import glob from "glob";
+import GetCurrentUserResolver from "./resolvers/Auth/queries/currentUser";
 
 const apolloServer = async () => {
   const resolvers = path.join(__dirname, "./resolvers/**/index.{ts,js}");
@@ -17,7 +18,7 @@ const apolloServer = async () => {
   console.log("allFiles", allFiles);
 
   const apolloSchemaOptions: BuildSchemaOptions = {
-    resolvers: [resolvers, resolvers_vercel],
+    resolvers: [GetCurrentUserResolver],
     validate: false,
     container: Container,
   };

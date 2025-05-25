@@ -3,10 +3,13 @@ import path from "path";
 import { ApolloServer } from "apollo-server-express";
 import { BuildSchemaOptions, buildSchema } from "type-graphql";
 import { Container } from "typedi";
+import glob from "glob";
 
 const apolloServer = async () => {
-  const resolvers = path.join(__dirname, "resolvers/**/index.{ts,js}");
+  const resolvers = path.join(__dirname, "./resolvers/**/index.{ts,js}");
   console.log("resolvers", resolvers);
+  const resolverFiles = glob.sync(resolvers, { absolute: true });
+  console.log("Found resolver files:", resolverFiles);
   const apolloSchemaOptions: BuildSchemaOptions = {
     resolvers: [resolvers],
     validate: false,

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Get Current User return null if no valid user is found: Example invalid current user 1`] = `
+Object {
+  "data": null,
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Get Current User return null if no valid user is found: Example valid current user 1`] = `
+Object {
+  "data": undefined,
+  "errors": Array [
+    [ValidationError: Cannot query field "currentUser" on type "Query".],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Get Current User should return object with registered user: Example valid current user 1`] = `
+Object {
+  "data": Object {
+    "currentUser": Object {
+      "id": "1",
+      "name": "John Doe",
+      "email": "user@example.com",
+      "createdAt": "2025-05-25T14:28:15.785Z",
+      "updatedAt": "2025-05-25T14:28:15.785Z"
+    }
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

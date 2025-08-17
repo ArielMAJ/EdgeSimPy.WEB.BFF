@@ -31,6 +31,7 @@ export async function requestToken(
   });
   const camelCaseData = keysToCamelCase(response.data);
   const { accessToken, tokenType, expiresAt } = camelCaseData;
+  console.info(`[LoginRequestResolver] Received token for user: ${email}`);
   return {
     accessToken,
     tokenType,

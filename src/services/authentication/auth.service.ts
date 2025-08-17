@@ -1,13 +1,13 @@
-import Token from "../../graphql/resolvers/Auth/types/objects/Token";
+import { ApolloError, AuthenticationError } from "apollo-server-express";
 import config from "../../config";
+import TokenResponse from "../../graphql/resolvers/Auth/types/objects/TokenResponse";
 import AxiosInstance from "../../utils/axios-instance";
 import keysToCamelCase from "../../utils/response-parser";
-import { AuthenticationError } from "apollo-server-express";
 
 export async function requestToken(
   email: string,
   password: string
-): Promise<Token> {
+): Promise<TokenResponse> {
   console.info(`[LoginRequestResolver] Sending request to SSO: ${email}`);
   const response = await AxiosInstance.post(
     `${config.ARTA_SSO_URL}/auth/token`,
@@ -24,13 +24,22 @@ export async function requestToken(
     console.error(
       `[LoginRequestResolver] Error while requesting token: ${error.message}`
     );
-    if (error.response && error.response.status === 401) {
-      throw new AuthenticationError("Invalid email or password.");
+    if (error?.response && error?.response?.status === 401) {
+      throw new AuthenticationError("Invalid email or password.", {
+        externalError: error,
+      });
     }
-    throw Error("An error occurred while logging in.");
+    throw new ApolloError(
+      "An error occurred while logging in.",
+      "UNKNOWN_ERROR",
+      {
+        externalError: error,
+      }
+    );
   });
   const camelCaseData = keysToCamelCase(response.data);
   const { accessToken, tokenType, expiresAt } = camelCaseData;
+  console.info(`[LoginRequestResolver] Received token for user: ${email}`);
   return {
     accessToken,
     tokenType,
